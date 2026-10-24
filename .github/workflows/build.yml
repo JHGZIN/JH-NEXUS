@@ -26,6 +26,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
+      - name: Extrair projeto Android
+        run: |
+          unzip -o JH-NEXUS-APK.zip -d projeto
+          find projeto -name settings.gradle.kts -o -name settings.gradle
       - name: Build debug APK
         run: gradle --no-daemon assembleDebug
       - name: Upload APK
